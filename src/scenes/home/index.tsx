@@ -51,7 +51,7 @@ const Home = ({ setSelectedPage }: Props) => {
                         </p>
                     </motion.div>
                     {/* ACTION */}
-                    <motion.div className="mt-8 flex items-center gap-8 md:justify-start"
+                    <motion.div className="mt-8 flex items-center gap-8 md:justify-start mb-10"
                         initial="hidden"
                         whileInView="visible"
                         // triggers once when 50% is in view 
