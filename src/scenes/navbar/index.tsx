@@ -1,0 +1,81 @@
+import { useState } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import Logo from "@/assets/Logo.png";
+import Link from "./link";
+import { SelectedPage } from "@/shared/types";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import ActionButton from "@/shared/ActionButton";
+
+type Props = {
+    isTopOfPage: boolean;
+    selectedPage: SelectedPage;
+    setSelectedPage: (value: SelectedPage) => void;
+}
+
+const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
+    const flexBetween = "flex items-center justify-between";
+    const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+    // boolean to check if the screen is above 1060px, using conditional to do something
+    const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+    const navbarBackground = isTopOfPage ? "bg-transparent" : "bg-primary-100 drop-shadow";
+
+    return (
+        <nav>
+            <div className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-6`}>
+                {/* mx-auto center the content */}
+                <div className={`${flexBetween} mx-auto w-5/6`}>
+                    <div className={`${flexBetween} w-full gap-16`}>
+                        {/* Left side  */}
+                        <img src={Logo} alt="logo" />
+
+                        {/* Right side  */}
+                        {isAboveMediumScreens ? (
+                            <div className={`${flexBetween} w-full`}>
+                                <div className={`${flexBetween} gap-8 text-sm`}>
+                                    <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                                    <Link page="Info" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                                    <Link page="Calendar" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                                    <Link page="Form" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                                </div>
+
+                                <div className={`${flexBetween} gap-8`}>
+                                    <ActionButton setSelectedPage={setSelectedPage}>Sign Up</ActionButton>
+                                </div>
+                            </div>)
+                            : (
+                                <div>
+                                    <button className="rounded-full bg-secondary-500 p-2" onClick={() => setIsMenuToggled(!isMenuToggled)}>
+                                        <Bars3Icon className="h-6 w-6 text-white"></Bars3Icon>
+                                    </button>
+                                </div>
+                            )}
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            {!isAboveMediumScreens && isMenuToggled && (
+                // [300px] gives exact pixel
+                <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
+                    {/* CLOSE ICON */}
+                    <div className="flex justify-end p-12">
+                        <button className="bg-transparent" onClick={() => setIsMenuToggled(!isMenuToggled)}>
+                            <XMarkIcon className="h-6 w-6 text-gray-400"></XMarkIcon>
+                        </button>
+                    </div>
+
+                    {/* MENU ITEMS  */}
+                    <div className="ml-[33%] flex flex-col gap-10 text-2xl">
+                        <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                        <Link page="Gallery" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                        <Link page="Contact" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                        <Link page="About" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                    </div>
+
+                </div>
+            )}
+        </nav>
+    )
+}
+
+export default Navbar
