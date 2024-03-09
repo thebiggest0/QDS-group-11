@@ -11,10 +11,12 @@ public class User {
   @Column(name = "user_id")  // Specify the column name to match UserHabit
   private Integer user_id;
 
+  @Column(nullable = false) // Set the nullable attribute to false
   private String username;
 
   private String email;
 
+  @Column(nullable = false) // Set the nullable attribute to false
   private String password;
 
   @OneToMany(mappedBy = "user")
