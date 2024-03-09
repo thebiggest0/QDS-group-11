@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import "./App.css";
 
 export default function Uncontrolled() {
   const habitNameRef = useRef(null);
@@ -26,6 +27,7 @@ export default function Uncontrolled() {
   }
 
   return (
+    // CSS needed
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
       <div className="mb-4">
         <label className="block mb-2">
