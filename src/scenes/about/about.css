@@ -88,6 +88,10 @@ body {
     margin: 6rem 0rem;
 }
 
+textarea {
+    width: 80%;
+}
+
 .form-container {
     margin: 0 auto;
     padding: 20px;
@@ -332,16 +336,6 @@ body {
 
     .primary-subheading {
         text-align: center;
-    }
-
-    .watch-video-button {
-        margin-left: 0rem !important;
-        margin-top: 1rem;
-        font-size: 1rem !important;
-    }
-
-    .watch-video-button svg {
-        margin-right: 0.5rem !important;
     }
 
     .about-section-image-container {
