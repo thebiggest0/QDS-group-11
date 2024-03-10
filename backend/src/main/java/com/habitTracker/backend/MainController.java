@@ -14,12 +14,10 @@ public class MainController {
   @Autowired
   private HabitRepository habitRepository;
 
-  @Autowired
-  private UserHabitRepository userHabitRepository;
-
   @PostMapping(path="/add") // Map ONLY POST Requests
-  public @ResponseBody String addNewUser (@RequestParam String username
-      , @RequestParam String email, @RequestParam String password) {
+  public @ResponseBody String addNewUser (@RequestParam String username,
+                                          @RequestParam String email,
+                                          @RequestParam String password) {
     // @ResponseBody means the returned String is the response, not a view name
     // @RequestParam means it is a parameter from the GET or POST request
 
@@ -53,20 +51,6 @@ public class MainController {
     return "Habit saved";
   }
 
-
-  @PostMapping(path="/assignHabitToUser")
-  public @ResponseBody String assignHabitToUser(@RequestParam Integer userId, @RequestParam Integer habitId) {
-    User user = userRepository.findById(userId).orElseThrow();
-    Habit habit = habitRepository.findById(habitId).orElseThrow();
-
-    UserHabit userHabit = new UserHabit();
-    userHabit.setUser(user);
-    userHabit.setHabit(habit);
-    userHabitRepository.save(userHabit);
-
-    return "Habit assigned to user";
-  }
-
   @GetMapping(path="/all")
   public @ResponseBody Iterable<User> getAllUsers() {
     // This returns a JSON or XML with the users
@@ -78,8 +62,4 @@ public class MainController {
     return habitRepository.findAll();
   }
 
-  @GetMapping(path="/allUserHabits")
-  public @ResponseBody Iterable<UserHabit> getAllUserHabits() {
-    return userHabitRepository.findAll();
-  }
 }

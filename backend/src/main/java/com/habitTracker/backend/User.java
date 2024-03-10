@@ -19,10 +19,6 @@ public class User {
   @Column(nullable = false) // Set the nullable attribute to false
   private String password;
 
-  @OneToMany(mappedBy = "user")
-  private Set<UserHabit> userHabits;
-
-
   public Integer getId() {
     return user_id;
   }
@@ -50,13 +46,5 @@ public class User {
   public String getPassword() { return password;}
 
   public void setPassword(String password) { this.password = password; }
-
-  public Set<UserHabit> getUserHabits() {
-    return userHabits;
-  }
-
-  public void setUserHabits(Set<UserHabit> userHabits) {
-    this.userHabits = userHabits;
-  }
 
 }
