@@ -1,5 +1,6 @@
 import React from 'react'
 import './about.css';
+import Work from './steps';
 import Contact from './contact'
 import Footer from './footer';
 
@@ -8,8 +9,8 @@ const About = () => {
         <section id='about'>
             {/* <Home />
             <About />
-            <Work />
             <Testimonial /> */}
+            <Work />
             <Contact />
             <Footer />
         </section>
