@@ -24,7 +24,7 @@ public class MainController {
   @Autowired
   private HabitRepository habitRepository;
 
-  @PostMapping(path="/add") // Map ONLY POST Requests
+  @PostMapping(path="/users/add") // Map ONLY POST Requests
   public @ResponseBody String addNewUser (@RequestParam String username,
                                           @RequestParam String email,
                                           @RequestParam String password) {
@@ -39,7 +39,7 @@ public class MainController {
     return "New user added";
   }
 
-  @PostMapping(path="/addHabit")
+  @PostMapping(path="/habits/add")
   public @ResponseBody String addNewHabit (@RequestParam String habit_name,
                                            @RequestParam String habit_desc,
                                            @RequestParam String icon,
@@ -61,14 +61,14 @@ public class MainController {
     return "Habit saved";
   }
 
-  @GetMapping(path="/all")
+  @GetMapping(path="/users/all")
   public @ResponseBody Iterable<User> getAllUsers() {
     // This returns a JSON or XML with the users
     System.out.println(userRepository);
     return userRepository.findAll();
   }
 
-  @GetMapping(path="/allHabits")
+  @GetMapping(path="/habits/all")
   public @ResponseBody Iterable<Habit> getAllHabits() {
     return habitRepository.findAll();
   }
