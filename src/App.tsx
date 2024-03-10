@@ -11,6 +11,7 @@ import HabitList from "./form/habitLists";
 import HabitDetails from "./form/habitDetails";
 import CustomHabits from "./form/newCustomHabit";
 import HabitDataService from "./services/habitService";
+import MoodDataService from "./services/moodService";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.home);
@@ -29,15 +30,16 @@ function App() {
     window.addEventListener("scroll", handleScroll);
 
     // Get users from API and set state
-    UserDataService.getAll()
+    MoodDataService.getAll()
       .then(response => { console.log(response.data) });
 
-    // UserDataService.create({
-    //   "username": "front",
-    //   "email": "f@t.ca",
-    //   "password": "asdfgd"
-    // })
-    //   .then(response => { console.log(response.data) });
+    MoodDataService.create({
+      "mood_date": "today",
+      "mood": "happy",
+      "reason": "things are good",
+      "note": "wow what a day"
+    })
+      .then(response => { console.log(response.data) });
     
       // HabitDataService.create({
       //   "habit_name": "front",
