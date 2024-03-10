@@ -9,9 +9,10 @@ class UserDataService {
 //     return http.get(`/tutorials/${id}`);
 //   }
 
-//   create(data) {
-//     return http.post("/tutorials", data);
-//   }
+  create(data) {
+    console.log('sending: ' + data);
+    return http.post("/users/add", data);
+  }
 
 //   update(id, data) {
 //     return http.put(`/tutorials/${id}`, data);

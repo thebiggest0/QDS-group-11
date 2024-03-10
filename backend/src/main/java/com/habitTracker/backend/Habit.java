@@ -28,6 +28,18 @@ public class Habit {
 
     private String endDate;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id") // Name of the foreign key column in the Habit table
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getHabit_desc() {
         return habit_desc;
     }

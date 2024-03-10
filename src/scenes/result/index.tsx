@@ -1,49 +1,66 @@
+import { useEffect, useState } from "react";
 import Article from "./article";
+import HabitDataService from "@/services/habitService";
 
 type Props = {}
 
-const result = () => {
+interface Habit {
+    habit_name: string;
+    habit_desc: string;
+    icon: string;
+    color: string;
+    habit_type: string;
+    goal: string;
+    start_date: string;
+    end_date: string;
+}
 
-    const news = [
-        {
-            id: 1,
-            title: "Rocket to the moon",
-            category: "Science",
-            author: "Bob",
-            description: "Lorem1",
-            url: "https://www.google.com/",
-        },
-        {
-            id: 1,
-            title: "Rocket to the sun",
-            category: "Sports",
-            author: "Alice",
-            description: "Lorem2",
-            url: "https://www.youtube.com/",
-        },
-    ];
+const result = (props: Props) => {
+    const [habits, setHabits] = useState<Array<Habit>>([]);
+
+    const getHabits = async () => {
+        try {
+            const response = await HabitDataService.getAll();
+            const habitsFromServer = response.data;
+            setHabits(habitsFromServer);
+        } catch (error) {
+            // Handle any errors that might occur during the API call
+            console.error("Error fetching habits:", error);
+        }
+    };
+
+    useEffect(() => {
+        getHabits();
+    }, []);
+
+    useEffect(() => {
+        console.log(habits);
+    }, [habits]);
+
 
 
     return (
         <section id="result" className="flex flex-col items-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-500 leading-tight tracking-tight" >Results</h1>
-            
+
             {
-            news.map(item => (
-                <div>
-                    <Article
-                        title={item.title}
-                        category={item.category}
-                        author={item.author}
-                        description={item.description}
-                        onClick={(url: string) => window.open(url, "_blank", "noopener,noreferrer")}
-                        url={item.url}
-                    ></Article>
-                </div>
-            ))
-        }
+                habits.map(item => (
+                    <div>
+                        <Article
+                            name={item.habit_name}
+                            desc={item.habit_desc}
+                            icon={item.icon}
+                            color={item.color}
+                            type={item.habit_type}
+                            goal={item.goal}
+                            start={item.start_date}
+                            end={item.end_date}
+                        ></Article>
+                    </div>
+                ))
+            }
         </section>
-        )
+    )
 }
 
 export default result
