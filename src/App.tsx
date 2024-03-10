@@ -46,7 +46,7 @@ function App() {
       <Calender />
       {/* <Form /> */}
       <CustomHabits />
-      {/* <Mood /> */}
+      <Mood />
       <Result />
       <About />
     </div>
