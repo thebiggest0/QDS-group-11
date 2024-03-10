@@ -1,6 +1,10 @@
 import Navbar from "@/scenes/navbar";
 import Home from "@/scenes/home";
+<<<<<<< HEAD
 import Mood from "@/scenes/mood";
+=======
+import About from "@/scenes/about";
+>>>>>>> 137f0ced07fa86d3b37fe8db604c7654c09d1967
 import Calender from "@/scenes/calander";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
@@ -33,8 +37,10 @@ function App() {
         setSelectedPage={setSelectedPage}
       />
       <Home setSelectedPage={setSelectedPage} />
-      {/* <About /> */}
       <Calender />
+      <About />
+
+
 
       {/* <Form /> */}
       <Mood />
