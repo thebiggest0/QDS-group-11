@@ -1,6 +1,7 @@
 import React from 'react'
 import './about.css';
 import Contact from './contact'
+import Footer from './footer';
 
 const About = () => {
     return (
@@ -10,7 +11,7 @@ const About = () => {
             <Work />
             <Testimonial /> */}
             <Contact />
-            {/* <Footer /> */}
+            <Footer />
         </section>
     )
 }

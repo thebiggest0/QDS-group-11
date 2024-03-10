@@ -42,7 +42,6 @@ function App() {
       {/* <Form /> */}
       {/* <Mood /> */}
       <About />
-      {/* <Footer /> */}
     </div>
   )
 }
