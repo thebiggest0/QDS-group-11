@@ -104,6 +104,7 @@ const Uncontrolled: React.FC<Props> = (props) => {
     //   .then(response => { console.log(response.data) });
 
     console.log("Submitted!");
+    alert("Habit added successfully!");
   }
 
   return (
