@@ -4,6 +4,7 @@ import About from "@/scenes/about";
 import Calender from "@/scenes/calander";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
+import UserDataService from "./services/userService";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.home);
@@ -20,6 +21,10 @@ function App() {
     }
     // Add the event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
+
+    // Get users from API and set state
+    UserDataService.getAll()
+      .then(response => { console.log(response.data) });
 
     // Clean up the event listener when the component unmounts
     return () => window.removeEventListener("scroll", handleScroll);
@@ -39,7 +44,7 @@ function App() {
 
 
       {/* <Form /> */}
-      {/* <Mood /> */}
+      <Mood />
       {/* <Footer /> */}
     </div>
   )

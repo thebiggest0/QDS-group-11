@@ -1,9 +1,19 @@
 package com.habitTracker.backend;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/froget") // This means URL's start with /demo (after Application path)
 public class MainController {
@@ -14,12 +24,10 @@ public class MainController {
   @Autowired
   private HabitRepository habitRepository;
 
-  @Autowired
-  private UserHabitRepository userHabitRepository;
-
   @PostMapping(path="/add") // Map ONLY POST Requests
-  public @ResponseBody String addNewUser (@RequestParam String username
-      , @RequestParam String email, @RequestParam String password) {
+  public @ResponseBody String addNewUser (@RequestParam String username,
+                                          @RequestParam String email,
+                                          @RequestParam String password) {
     // @ResponseBody means the returned String is the response, not a view name
     // @RequestParam means it is a parameter from the GET or POST request
 
@@ -53,23 +61,10 @@ public class MainController {
     return "Habit saved";
   }
 
-
-  @PostMapping(path="/assignHabitToUser")
-  public @ResponseBody String assignHabitToUser(@RequestParam Integer userId, @RequestParam Integer habitId) {
-    User user = userRepository.findById(userId).orElseThrow();
-    Habit habit = habitRepository.findById(habitId).orElseThrow();
-
-    UserHabit userHabit = new UserHabit();
-    userHabit.setUser(user);
-    userHabit.setHabit(habit);
-    userHabitRepository.save(userHabit);
-
-    return "Habit assigned to user";
-  }
-
   @GetMapping(path="/all")
   public @ResponseBody Iterable<User> getAllUsers() {
     // This returns a JSON or XML with the users
+    System.out.println(userRepository);
     return userRepository.findAll();
   }
 
@@ -78,8 +73,4 @@ public class MainController {
     return habitRepository.findAll();
   }
 
-  @GetMapping(path="/allUserHabits")
-  public @ResponseBody Iterable<UserHabit> getAllUserHabits() {
-    return userHabitRepository.findAll();
-  }
 }
