@@ -1,4 +1,4 @@
-# Froget
+# Froget ![Logo](src/assets/HomeFrog.png)
 
 ## Inspiration
 As CST students balancing tough deadlines, coursework, and life, we often lose track of our good habits and succumb to not-so-great ones. It's easy to dwell on the negatives in our busy lives, overlooking the positives. That's why we've decided to create a simple habit and mood tracker. Our goal is to help students look back on the good and bad days, understand what makes a day go well, and learn from the not-so-good ones. Our goal is to bring balance and mindfulness back into our hectic lives, guiding us to foster better habits and maintain our emotional well-being.
