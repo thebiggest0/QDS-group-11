@@ -24,6 +24,8 @@ public class Habit {
 
     private String goal;
 
+    private String per;
+
     private String startDate;
 
     private String endDate;
@@ -94,6 +96,10 @@ public class Habit {
     public String getStartDate() {
         return startDate;
     }
+
+    public String getPer() { return per; }
+
+    public void setPer(String per) { this.per = per;}
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;

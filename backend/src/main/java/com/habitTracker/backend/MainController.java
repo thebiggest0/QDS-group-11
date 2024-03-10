@@ -82,6 +82,7 @@ public class MainController {
     h.setColor(habitData.get("color"));
     h.setHabit_type(habitData.get("habit_type"));
     h.setGoal(habitData.get("goal"));
+    h.setPer(habitData.get("per"));
     h.setStartDate(habitData.get("start_date"));
     h.setEndDate(habitData.get("end_date"));
     habitRepository.save(h);
