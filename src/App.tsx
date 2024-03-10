@@ -1,9 +1,6 @@
 import Navbar from "@/scenes/navbar";
 import Home from "@/scenes/home";
-<<<<<<< HEAD
 import Mood from "@/scenes/mood";
-=======
->>>>>>> 9150514def4e35aab231362a89b20b8965198180
 import About from "@/scenes/about";
 import Calender from "@/scenes/calander";
 import { useEffect, useState } from "react";
