@@ -34,6 +34,19 @@ const Uncontrolled: React.FC = () => {
   const [selectedColour, setSelectedColour] = useState<string>("#FF0000");
   const [habitType, setHabitType] = useState<string>("");
 
+  const clearForm = () => {
+    // Clearing form fields using useRef
+    if (habitNameRef.current) habitNameRef.current.value = '';
+    if (habitDescriptionRef.current) habitDescriptionRef.current.value = '';
+    if (habitIconRef.current) habitIconRef.current.value = '';
+    if (habitColourRef.current) setSelectedColour("#FF0000"); // Reset color to default
+    if (habitGoalRef.current) habitGoalRef.current.value = '';
+    if (habitGoalPeriodRef.current) habitGoalPeriodRef.current.value = '';
+    if (habitStartDateRef.current) habitStartDateRef.current.value = '';
+    if (habitEndDateRef.current) habitEndDateRef.current.value = '';
+  };
+  
+
   const handleIconClick = (icon: string) => {
     setSelectedIcon(icon);
     if (habitIconRef.current) {
@@ -80,10 +93,12 @@ const Uncontrolled: React.FC = () => {
   }
 
   return (
+    <section id="form" className="bg-gray-20">
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4 bg-gray-20 p-20 text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
       <div className="mb-4 text-center ">
         <h2> Make A New Habit </h2>
         <label className="block mb-2">
+          <br></br>
           <p>New Habit Name:</p>
           <input
             ref={habitNameRef}
@@ -152,7 +167,7 @@ const Uncontrolled: React.FC = () => {
       <button className="w-10 h-10 rounded-full border border-gray-300 focus:outline-none flex items-center justify-center" 
       onClick={() => {
               if (habitColourRef.current) {
-                habitColourRef.current.click(); // Simulate click on the hidden input
+                habitColourRef.current.click(); 
               }
             }}> <input type="color" className="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700" id="hs-color-input" value="#2563eb" title="Choose your color"></input></button>
         </div>
@@ -165,8 +180,8 @@ const Uncontrolled: React.FC = () => {
           <div className="flex justify-center">
             <button
               type='button'
-              className={`mr-4 px-4 py-2 rounded rounded-full focus:outline-none ${habitType === "quit"
-                  ? "bg-green-500 text-white"
+              className={`rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500 ${habitType === "quit"
+                  ? "bg-white-500 text-white"
                   : "bg-white-300 text-gray-700"
                 }`}
               onClick={() => handleHabitTypeClick("quit")}
@@ -175,8 +190,8 @@ const Uncontrolled: React.FC = () => {
             </button>
             <button
               type='button'
-              className={`px-4 py-2 rounded rounded-full focus:outline-none ${habitType === "build"
-                  ? "bg-green-500 text-white"
+              className={`rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500" ${habitType === "build"
+                  ? "bg-white-500 text-white"
                   : "bg-white-300 text-gray-700"
                 }`}
               onClick={() => handleHabitTypeClick("build")}
@@ -266,14 +281,27 @@ const Uncontrolled: React.FC = () => {
           </div>
         </label>
       </div>
-      <button
-        type="submit"
-        className="px-4 py-2 bg-white-500 mr-4 px-4 py-2 rounded rounded-full mx-auto hover:bg-green-600"
-      >
-        Submit
-      </button>
+
+      <div className="mb-4 flex justify-center items-center">
+  <button
+    type="submit"
+    className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+  >
+    Submit
+  </button>
+
+  <button
+  type="button"
+  onClick={clearForm}
+  className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+>
+  Clear
+</button>
+</div>
 
     </form>
+    </section>
+    
   );
 };
 
