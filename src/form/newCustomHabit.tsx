@@ -67,7 +67,8 @@ const Uncontrolled: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4">
-      <div className="mb-4">
+      <div className="mb-4 text-center">
+        <h2> Make A New Habit </h2>
         <label className="block mb-2">
           <p>New Habit Name:</p>
           <input
@@ -79,7 +80,7 @@ const Uncontrolled: React.FC = () => {
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">
+        <label className="block mb-2 text-center">
           <p>Description:</p>
           <input
             ref={habitDescriptionRef}
@@ -90,9 +91,9 @@ const Uncontrolled: React.FC = () => {
       </div>
 
       <div className="mb-4">
-  <label className="block mb-2">
+  <label className="block mb-2 text-center">
     <p>Choose Icon:</p>
-    <div className="flex flex-wrap gap-2 justify-center">
+    <div className="flex flex-wrap gap-2 justify-center text-center">
       {iconList.map(({ icon, label }) => (
         <button
           ref={habitIconRef}
@@ -111,7 +112,7 @@ const Uncontrolled: React.FC = () => {
 
 
       <div className="mb-4 ">
-        <label className="block mb-2">
+        <label className="block mb-2 text-center">
           <p>Colour:</p>
           <input
             ref={habitColourRef}
@@ -135,7 +136,7 @@ const Uncontrolled: React.FC = () => {
       </div>
 
       <div className="mb-4">
-  <label className="block mb-2">
+  <label className="block mb-2 text-center">
     <p>Habit Type:</p>
     <div className="flex justify-center">
       <button
@@ -164,7 +165,7 @@ const Uncontrolled: React.FC = () => {
 
 
 <div className="mb-4">
-  <label className="block mb-2">
+  <label className="block mb-2 text-center">
     <p>Goal:</p>
     <input
       ref={habitGoalRef}
@@ -173,6 +174,7 @@ const Uncontrolled: React.FC = () => {
       className="block w-full px-4 py-2 rounded border-gray-300 focus:border-blue-500 focus:outline-none"
     />{" "}
     per
+    <br />
     <input
       type="radio"
       name="goalPeriod"
@@ -201,7 +203,7 @@ const Uncontrolled: React.FC = () => {
 </div>
 
 <div className="mb-4">
-  <label className="block mb-2">
+  <label className="block mb-2 text-center">
     <p>Habit Term:</p>
     <div className="flex flex-col">
       <div className="grid grid-cols-2 gap-4 mb-4">
@@ -240,18 +242,13 @@ const Uncontrolled: React.FC = () => {
     </div>
   </label>
 </div>
+<button
+  type="submit"
+  className="px-4 py-2 bg-white-500 mr-4 px-4 py-2 rounded rounded-full mx-auto hover:bg-green-600"
+>
+  Submit
+</button>
 
-
-
-
-
-
-      <button
-        type="submit"
-        className="px-4 py-2 bg-brown-500 text-green rounded hover:bg-blue-600"
-      >
-        Submit
-      </button>
     </form>
   );
 };
