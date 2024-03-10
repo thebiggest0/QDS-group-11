@@ -86,8 +86,8 @@ const Uncontrolled: React.FC = () => {
 
   return (
     <section id="form" className="bg-gray-20">
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4 bg-gray-20 p-20 text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
-        <div className="mb-4 text-center ">
+      <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-gray-20 p-20 text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
+        <div className="mb-4 text-center">
           <h2> Make A New Habit </h2>
         </div>
         <div className="mb-4">
