@@ -7,9 +7,6 @@ import Footer from './footer';
 const About = () => {
     return (
         <section id='about'>
-            {/* <Home />
-            <About />
-            <Testimonial /> */}
             <Work />
             <Contact />
             <Footer />
