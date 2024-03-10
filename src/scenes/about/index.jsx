@@ -4,14 +4,14 @@ import Contact from './contact'
 
 const About = () => {
     return (
-        <div className="App">
+        <section id='about'>
             {/* <Home />
             <About />
             <Work />
             <Testimonial /> */}
             <Contact />
             {/* <Footer /> */}
-        </div>
+        </section>
     )
 }
 
