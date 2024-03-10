@@ -1,34 +1,42 @@
 package com.habitTracker.backend;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.Set;
+
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
-  private Integer id;
+  @Column(name = "user_id")  // Specify the column name to match UserHabit
+  private Integer user_id;
 
-  private String name;
+  @Column(nullable = false) // Set the nullable attribute to false
+  private String username;
 
   private String email;
 
+  @Column(nullable = false) // Set the nullable attribute to false
+  private String password;
+
+  @OneToMany(mappedBy = "user")
+  private Set<UserHabit> userHabits;
+
+
   public Integer getId() {
-    return id;
+    return user_id;
   }
 
   public void setId(Integer id) {
-    this.id = id;
+    this.user_id = id;
   }
 
   public String getName() {
-    return name;
+    return username;
   }
 
   public void setName(String name) {
-    this.name = name;
+    this.username = name;
   }
 
   public String getEmail() {
@@ -38,4 +46,17 @@ public class User {
   public void setEmail(String email) {
     this.email = email;
   }
+
+  public String getPassword() { return password;}
+
+  public void setPassword(String password) { this.password = password; }
+
+  public Set<UserHabit> getUserHabits() {
+    return userHabits;
+  }
+
+  public void setUserHabits(Set<UserHabit> userHabits) {
+    this.userHabits = userHabits;
+  }
+
 }
