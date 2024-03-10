@@ -47,7 +47,7 @@ body {
     border-radius: 5rem;
     font-size: 1.1rem;
     cursor: pointer;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: white;
     transition: 0.2s;
     display: flex;
@@ -74,7 +74,6 @@ body {
     margin-top: 2rem;
     display: flex;
 }
-
 
 .contact-page-wrapper h1 {
     max-width: 900px !important;
