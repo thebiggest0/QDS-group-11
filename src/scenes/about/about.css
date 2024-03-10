@@ -12,7 +12,7 @@ img {
 
 #about {
     min-height: 100vh;
-    width: 85vw;
+    width: 100%;
     max-width: 1900px;
     margin: 0rem auto;
 }
@@ -89,7 +89,6 @@ body {
 }
 
 .form-container {
-    /* max-width: 500px; */
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
@@ -126,7 +125,7 @@ body {
 }
 
 .form-container input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #507754;
 }
 
 .footer-wrapper {
@@ -149,9 +148,6 @@ body {
     color: #585858;
 }
 
-/* .footer-section-one {
-  border: 2px solid blue;
-} */
 .footer-section-two {
     flex: 1;
     display: flex;
@@ -317,13 +313,6 @@ body {
     .primary-text {
         text-align: center;
         max-width: 80%;
-    }
-
-    .home-text-section,
-    .about-section-text-container {
-        justify-content: center;
-        align-items: center;
-        margin-top: 4rem;
     }
 
     .secondary-button {
