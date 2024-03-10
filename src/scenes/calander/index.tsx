@@ -22,7 +22,6 @@ const calender = ({ moods }: Props) => {
   const [today, setToday] = useState(currentDate);
   const [selectDate, setSelectDate] = useState(currentDate);
   const [daysMoods, setDaysMoods] = useState([]);
-  const [moodDays, setMoodDays] = useState([])
 
   useEffect(() => {
     getDaysMoods(selectDate);
@@ -40,8 +39,13 @@ const calender = ({ moods }: Props) => {
     setSelectDate(date);
   }
 
-  const getMoodDays = () => {
-
+  const isMoodDay = (date) => {
+    for (var i = 0; i < moods.length; i++) {
+      if (dayjs(moods[i].mood_date).isSame(date, 'day')) {
+        return true;
+      }
+    }
+  return false;
   }
 
   return (
