@@ -14,6 +14,8 @@ public class Habit {
     @Column(nullable = false) // Set the nullable attribute to false
     private String habit_name;
 
+    private String habit_desc;
+
     private String icon;
 
     private String color;
@@ -26,26 +28,19 @@ public class Habit {
 
     private String endDate;
 
-    public String getHabit_desc() {
-        return habit_desc;
-    }
-
     @OneToMany(mappedBy = "habit")
     private Set<UserHabit> userHabits;
 
+    public String getHabit_desc() {
+        return habit_desc;
+    }
 
     public void setHabit_desc(String habit_desc) {
         this.habit_desc = habit_desc;
     }
 
-    private String habit_desc;
-
     public Integer getHabit_id() {
         return habit_id;
-    }
-
-    public void setHabit_id(Integer habit_id) {
-        this.habit_id = habit_id;
     }
 
     public String getHabit_name() {
