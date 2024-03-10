@@ -1,5 +1,6 @@
 import Navbar from "@/scenes/navbar";
 import Home from "@/scenes/home";
+import Mood from "@/scenes/mood";
 import About from "@/scenes/about";
 import Calender from "@/scenes/calander";
 import { useEffect, useState } from "react";
