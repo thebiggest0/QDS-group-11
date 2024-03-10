@@ -85,7 +85,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 6rem 0rem;
+    margin: 3rem 0rem;
 }
 
 textarea {
@@ -208,7 +208,7 @@ textarea {
 }
 
 .work-section-wrapper {
-    margin-top: 15rem;
+    margin-top: 3rem;
 }
 
 .work-section-top p {

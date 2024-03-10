@@ -28,7 +28,7 @@ const Contact = () => {
     return (
         <div className="contact-page-wrapper">
             <h1 >Have Question In Mind?</h1>
-            <h1 >Let Us Help You</h1>
+            <p className="text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">Let Us Help You</p>
             <form className="form-container" ref={form} onSubmit={sendEmail}>
                 <div>
                     <label>Name</label>
