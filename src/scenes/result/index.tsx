@@ -2,7 +2,7 @@ import Article from "./article";
 
 type Props = {}
 
-const result = (props: Props) => {
+const result = () => {
 
     const news = [
         {
