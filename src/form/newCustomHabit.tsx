@@ -80,8 +80,8 @@ const Uncontrolled: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4">
-      <div className="mb-4 text-center">
+    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4 bg-gray-20 p-20 text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
+      <div className="mb-4 text-center ">
         <h2> Make A New Habit </h2>
         <label className="block mb-2">
           <p>New Habit Name:</p>
@@ -125,30 +125,39 @@ const Uncontrolled: React.FC = () => {
       </div>
 
 
-      <div className="mb-4 ">
-        <label className="block mb-2 text-center">
-          <p>Colour:</p>
-          <input
-            ref={habitColourRef}
-            type="color"
-            value={selectedColour}
-            className="hidden"
-          />
-          <div className="flex items-center space-x-2 justify-center">
-            {sampleColours.map((colour, index) => (
-              <button
-                type='button'
-                key={index}
-                className="w-10 h-10 rounded-full border border-gray-300 focus:outline-none flex items-center justify-center"
-                style={{ backgroundColor: colour }}
-                onClick={() => handleColourChange(colour)}
-              >
-                +
-              </button>
-            ))}
-          </div>
-        </label>
-      </div>
+      <div className="mb-4">
+      <label className="block mb-2 text-center">
+        <p>Colour:</p>
+        <input
+          ref={habitColourRef}
+          type="color"
+          value={selectedColour}
+          className="hidden"
+          onChange={(e) => setSelectedColour(e.target.value)}
+        />
+        <div className="flex items-center space-x-2 justify-center">
+          {sampleColours.map((colour, index) => (
+            <button
+              type='button'
+              key={index}
+              className="w-10 h-10 rounded-full border border-gray-300 focus:outline-none flex items-center justify-center"
+              style={{ backgroundColor: colour }}
+              onClick={() => handleColourChange(colour)}
+            >
+              
+            </button>
+          ))}
+
+          {/* test colour picker */}
+      <button className="w-10 h-10 rounded-full border border-gray-300 focus:outline-none flex items-center justify-center" 
+      onClick={() => {
+              if (habitColourRef.current) {
+                habitColourRef.current.click(); // Simulate click on the hidden input
+              }
+            }}> <input type="color" className="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700" id="hs-color-input" value="#2563eb" title="Choose your color"></input></button>
+        </div>
+      </label>
+    </div>
 
       <div className="mb-4">
         <label className="block mb-2 text-center">
