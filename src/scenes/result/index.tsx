@@ -5,6 +5,7 @@ import HabitDataService from "@/services/habitService";
 type Props = {}
 
 interface Habit {
+    habit_id: number;
     habit_name: string;
     habit_desc: string;
     icon: string;
@@ -37,6 +38,18 @@ const result = (props: Props) => {
         console.log(habits);
     }, [habits]);
 
+    const deleteHabit = async (id: number, habits: Array<Habit>) => {
+        try {
+            await HabitDataService.delete(id);
+            const filteredHabits = habits.filter((habit) => { return habit.habit_id == id });
+            console.log("habits: " + habits);
+            console.log("filtered habits: " + filteredHabits);
+            setHabits(filteredHabits);
+        } catch (error) {
+            // Handle any errors that might occur during the API call
+            console.error("Error deleting habit: ", error);
+        }
+    };
 
 
     return (
@@ -55,6 +68,7 @@ const result = (props: Props) => {
                             goal={item.goal}
                             start={item.start_date}
                             end={item.end_date}
+                            onDelete={() => deleteHabit(item.habit_id, habits)}
                         ></Article>
                     </div>
                 ))

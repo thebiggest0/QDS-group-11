@@ -16,6 +16,10 @@ class HabitDataService {
   update(id, data) {
     return http.put(`/habits/${id}`, data);
   }
+
+  delete(id) {
+    return http.delete(`/habits/${id}`);
+  }
 }
 
 export default new HabitDataService();

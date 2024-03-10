@@ -30,16 +30,16 @@ function App() {
     window.addEventListener("scroll", handleScroll);
 
     // Get users from API and set state
-    MoodDataService.getAll()
-      .then(response => { console.log(response.data) });
+    // MoodDataService.getAll()
+    //   .then(response => { console.log(response.data) });
 
-    MoodDataService.create({
-      "mood_date": "today",
-      "mood": "happy",
-      "reason": "things are good",
-      "note": "wow what a day"
-    })
-      .then(response => { console.log(response.data) });
+    // MoodDataService.create({
+    //   "mood_date": "today",
+    //   "mood": "happy",
+    //   "reason": "things are good",
+    //   "note": "wow what a day"
+    // })
+    //   .then(response => { console.log(response.data) });
     
       // HabitDataService.create({
       //   "habit_name": "front",
