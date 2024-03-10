@@ -46,8 +46,8 @@ const Home = ({ setSelectedPage }: Props) => {
                             </div>
                         </div>
 
-                        <p className="mt-8 text-sm">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos hic perspiciatis cum vel aperiam, officiis blanditiis quasi, quaerat, nostrum error saepe temporibus? Inventore doloribus cumque ipsum quibusdam optio ut nisi!
+                        <p className="mt-8 text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
+                            Look back on your habits and moods. Record your day with just a few taps. Discover the patterns that make you happy and find those that weigh you down. Let's get started!
                         </p>
                     </motion.div>
                     {/* ACTION */}

@@ -22,14 +22,14 @@ const calender = (props: Props) => {
 
           <div className="flex justify-between">
             <div>
-              <h1 className="text-base">{months[today.month()]}, {today.year()}</h1>
+              <h1 className="text-base lg:text-6xl font-light text-gray-500 leading-tight tracking-tight">{months[today.month()]}, {today.year()}</h1>
             </div>
 
             <div className="flex items-center gap-5">
               <GrFormPrevious className="w-5 h-5 cursor-pointer" onClick={() => {
                 setToday(today.month(today.month() - 1))
               }} />
-              <h1 className="cursor-pointer text-base" onClick={() => {
+              <h1 className="cursor-pointer text-base lg:text-6xl font-light text-gray-500 leading-tight tracking-tight" onClick={() => {
                 setToday(currentDate)
               }}>Today</h1>
               <GrFormNext className="w-5 h-5 cursor-pointer" onClick={() => {
@@ -41,7 +41,7 @@ const calender = (props: Props) => {
           <div className="w-full grid grid-cols-7">
             {days.map((day, index) => {
               return (
-                <h1 key={index} className="h-14 grid place-content-center text-sm text-gray-400">{day}</h1>
+                <h1 key={index} className="h-14 grid place-content-center text-sm text-gray-400 lg:text-6xl font-light leading-tight tracking-tight">{day}</h1>
               )
             })}
           </div>
@@ -52,7 +52,7 @@ const calender = (props: Props) => {
               return (
                 <div key={index} className="h-14 border-t grid place-content-center">
                   <h1 className={cn(
-                    currentMonth ? "text-sm" : "text-gray-300 text-sm",
+                    currentMonth ? "text-sm" : "text-gray-300 text-sm lg:text-6xl font-light leading-tight tracking-tight",
                     today ? "bg-red-600 text-white" : "",
                     selectDate.toDate().toDateString() === date.toDate().toDateString() ? "bg-black text-white" : "",
                     "h-10 w-10 grid place-content-center rounded-full hover:bg-black hover:text-white transition-all cursor-pointer"

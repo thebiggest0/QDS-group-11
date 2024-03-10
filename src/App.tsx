@@ -43,8 +43,6 @@ function App() {
       <Home setSelectedPage={setSelectedPage} />
       <Calender />
       {/* <Form /> */}
-      <HabitList />
-      <HabitDetails />
       <CustomHabits />
       {/* <Mood /> */}
       <About />
