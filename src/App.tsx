@@ -39,12 +39,9 @@ function App() {
       />
       <Home setSelectedPage={setSelectedPage} />
       <Calender />
-      <About />
-
-
-
       {/* <Form /> */}
-      <Mood />
+      {/* <Mood /> */}
+      <About />
       {/* <Footer /> */}
     </div>
   )
