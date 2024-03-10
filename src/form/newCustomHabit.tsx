@@ -21,7 +21,11 @@ const sampleColours = [
   "#FFDAB9", // Peach Puff
 ];
 
-const Uncontrolled: React.FC = () => {
+type Props = {
+  onAddHabit: Function;
+}
+
+const Uncontrolled: React.FC<Props> = ({onAddHabit}: Props) => {
   const habitIconRef = useRef<HTMLInputElement>(null);
   const habitNameRef = useRef<HTMLInputElement>(null);
   const habitDescriptionRef = useRef<HTMLInputElement>(null);
@@ -73,15 +77,8 @@ const Uncontrolled: React.FC = () => {
       end_date: habitEndDateRef.current?.value || ''
     };
 
-    HabitDataService.create(formData)
-      .then(response => {
-        console.log(response.data);
-        window.alert("Form submitted successfully!");
-        clearForm();
-      })
-      .catch(error => {
-        console.error("Error submitting form:", error);
-      });
+    onAddHabit(formData.habit_name, formData.habit_desc, formData.icon, formData.color,
+      formData.habit_type, formData.goal, formData.start_date, formData.end_date);
   };
 
   return (

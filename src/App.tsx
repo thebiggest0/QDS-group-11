@@ -25,10 +25,18 @@ interface Habit {
   end_date: string;
 }
 
+interface MoodRecord {
+  mood_date: string;
+  mood: string;
+  reason: string;
+  note: string;
+}
+
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.home);
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
   const [habits, setHabits] = useState<Array<Habit>>([]);
+  const [moods, setMoods] = useState<Array<MoodRecord>>([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,13 +65,29 @@ function App() {
     }
   };
 
+  const getMoods = async () => {
+    try {
+      const response = await MoodDataService.getAll();
+      const moodsFromServer = response.data;
+      setMoods(moodsFromServer);
+    } catch (error) {
+      // Handle any errors that might occur during the API call
+      console.error("Error fetching moods:", error);
+    }
+  };
+
   useEffect(() => {
     getHabits();
+    getMoods();
   }, []);
 
   useEffect(() => {
     console.log(habits);
   }, [habits]);
+
+  useEffect(() => {
+    console.log(moods);
+  }, [moods]);
 
   const deleteHabit = async (id: number, habits: Array<Habit>) => {
     try {
@@ -94,29 +118,29 @@ function App() {
     console.log('in addHabit')
 
     HabitDataService.create(newHabit)
-      .then(response => { newHabit.habit_id = response.data });
+      .then(response => { newHabit.habit_id = response.data })
+      .then(() => { window.alert("Form submitted successfully!") });
 
     const newHabits = [...habits, newHabit];
     setHabits(newHabits);
   }
 
-  // function handleHabitSubmit(event: React.FormEvent<HTMLFormElement>,
-  //   name: string, desc: string, icon: string, color: string, type: string, goal: string, start: string, end: string) {
-  //   event.preventDefault();
+  const addMood = async (mood_date: string, mood: string, reason: string, note: string) => {
+    const newMood = {
+      "mood_date": `${mood_date}`,
+      "mood": `${mood}`,
+      "reason": `${reason}`,
+      "note": `${note}`
+    }
 
-  //   console.log("Habit name:", name);
-  //   console.log("Habit description:", desc);
-  //   console.log("Habit icon:", icon);
-  //   console.log("Habit colour:", color);
-  //   console.log("Habit goal type:", type);
-  //   console.log("Habit goal:", goal);
-  //   console.log("Habit term starts :", start);
-  //   console.log("Habit term ends :", end);
+    console.log('in addMood')
 
-  //   addHabit(name, desc, icon, color, type, goal, start, end);
+    MoodDataService.create(newMood)
+      .then(() => { window.alert("Mood recorded successfully!") });
 
-  //   console.log("Submitted!");
-  // }
+    const newMoods = [...moods, newMood];
+    setMoods(newMoods);
+  }
 
   return (
     <div className="app" bg-gray-20>
@@ -126,10 +150,10 @@ function App() {
         setSelectedPage={setSelectedPage}
       />
       <Home setSelectedPage={setSelectedPage} />
-      <Calender />
+      <Calender moods={moods} />
       {/* <Form /> */}
       <CustomHabits onAddHabit={addHabit} />
-      <Mood />
+      <Mood onAddMood={addMood} />
       <Result habits={habits} onDeleteHabit={deleteHabit} />
       <About />
     </div>
