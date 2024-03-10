@@ -26,7 +26,7 @@ const Work = () => {
             <div className="work-section-top">
                 <p className="primary-subheading">Getting Started</p>
                 <h1 className="primary-heading">How It Works</h1>
-                <p className="primary-text">
+                <p className="font-light leading-tight tracking-tight">
                     Follow these three simple steps, it is easy!
                 </p>
             </div>
