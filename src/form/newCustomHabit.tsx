@@ -13,12 +13,12 @@ const iconList: { icon: string; label: string }[] = [
 ];
 
 const sampleColours = [
-  "#FF0000",
-  "#00FF00",
-  "#0000FF",
-  "#FFFF00",
-  "#FF00FF",
-  "#00FFFF",
+  "#FFB6C1", // Pastel Pink
+  "#FFD700", // Pastel Yellow
+  "#87CEEB", // Pastel Blue
+  "#98FB98", // Pastel Green
+  "#FFA07A", // Pastel Salmon
+  "#FFDAB9"  // Peach Puff
 ];
 
 const Uncontrolled: React.FC = () => {
@@ -81,7 +81,8 @@ const Uncontrolled: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4">
-      <div className="mb-4">
+      <div className="mb-4 text-center">
+        <h2> Make A New Habit </h2>
         <label className="block mb-2">
           <p>New Habit Name:</p>
           <input
@@ -93,7 +94,7 @@ const Uncontrolled: React.FC = () => {
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">
+        <label className="block mb-2 text-center">
           <p>Description:</p>
           <input
             ref={habitDescriptionRef}
@@ -104,27 +105,28 @@ const Uncontrolled: React.FC = () => {
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">
+        <label className="block mb-2 text-center">
           <p>Choose Icon:</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 justify-center text-center">
             {iconList.map(({ icon, label }) => (
               <button
                 type='button'
                 ref={habitIconRef}
                 key={label}
-                className={`p-2 bg-gray-200 rounded-full focus:outline-none ${selectedIcon === icon ? "bg-blue-500 text-white" : ""
+                className={`p-2 rounded-full focus:outline-none ${selectedIcon === icon ? "text-4xl bg-green-500 text-white" : ""
                   }`}
                 onClick={() => handleIconClick(icon)}
               >
-                <i className="material-icons">{icon}</i>
+                <i className="material-icons text-2xl">{icon}</i> {/* Adjust text size here */}
               </button>
             ))}
           </div>
         </label>
       </div>
 
-      <div className="mb-4">
-        <label className="block mb-2">
+
+      <div className="mb-4 ">
+        <label className="block mb-2 text-center">
           <p>Colour:</p>
           <input
             ref={habitColourRef}
@@ -132,7 +134,7 @@ const Uncontrolled: React.FC = () => {
             value={selectedColour}
             className="hidden"
           />
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 justify-center">
             {sampleColours.map((colour, index) => (
               <button
                 type='button'
@@ -149,42 +151,45 @@ const Uncontrolled: React.FC = () => {
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">
+        <label className="block mb-2 text-center">
           <p>Habit Type:</p>
-          <div>
+          <div className="flex justify-center">
             <button
               type='button'
-              className={`mr-4 px-4 py-2 rounded focus:outline-none ${habitType === "quit"
-                ? "bg-blue-500 text-white"
-                : "bg-gray-300 text-gray-700"
+              className={`mr-4 px-4 py-2 rounded rounded-full focus:outline-none ${habitType === "quit"
+                  ? "bg-green-500 text-white"
+                  : "bg-white-300 text-gray-700"
                 }`}
               onClick={() => handleHabitTypeClick("quit")}
             >
-              Quit : I don't want this habit
+              Quit
             </button>
             <button
               type='button'
-              className={`px-4 py-2 rounded focus:outline-none ${habitType === "build"
-                ? "bg-blue-500 text-white"
-                : "bg-gray-300 text-gray-700"
+              className={`px-4 py-2 rounded rounded-full focus:outline-none ${habitType === "build"
+                  ? "bg-green-500 text-white"
+                  : "bg-white-300 text-gray-700"
                 }`}
               onClick={() => handleHabitTypeClick("build")}
             >
-              Build : I want to start to have a new habit!
+              Build
             </button>
           </div>
         </label>
       </div>
 
+
       <div className="mb-4">
-        <label className="block mb-2">
+        <label className="block mb-2 text-center">
           <p>Goal:</p>
           <input
             ref={habitGoalRef}
             type="text"
+            placeholder="e.g., 100 steps"
             className="block w-full px-4 py-2 rounded border-gray-300 focus:border-blue-500 focus:outline-none"
           />{" "}
           per
+          <br />
           <input
             type="radio"
             name="goalPeriod"
@@ -213,33 +218,52 @@ const Uncontrolled: React.FC = () => {
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">
+        <label className="block mb-2 text-center">
           <p>Habit Term:</p>
-          <div>
-            <label className="block mb-1">Start Date:</label>
-            <input
-              type="date"
-              ref={habitStartDateRef}
-              className="block w-full px-4 py-2 rounded border-gray-300 focus:border-blue-500 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label className="block mb-1">End Date:</label>
-            <input
-              type="date"
-              ref={habitEndDateRef}
-              className="block w-full px-4 py-2 rounded border-gray-300 focus:border-blue-500 focus:outline-none"
-            />
+          <div className="flex flex-col">
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block mb-1">Start Date:</label>
+                <input
+                  type="date"
+                  ref={habitStartDateRef}
+                  className="block w-full px-4 py-2 rounded border-gray-300 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="block mb-1">End Date:</label>
+                <input
+                  type="date"
+                  ref={habitEndDateRef}
+                  className="block w-full px-4 py-2 rounded border-gray-300 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <input
+                type="checkbox"
+                id="noEndDate"
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    habitEndDateRef.current.disabled = true;
+                    habitEndDateRef.current.value = '';
+                  } else {
+                    habitEndDateRef.current.disabled = false;
+                  }
+                }}
+              />
+              <label htmlFor="noEndDate" className="ml-2">No End Date</label>
+            </div>
           </div>
         </label>
       </div>
-
       <button
         type="submit"
-        className="px-4 py-2 bg-blue-500 text-green rounded hover:bg-blue-600"
+        className="px-4 py-2 bg-white-500 mr-4 px-4 py-2 rounded rounded-full mx-auto hover:bg-green-600"
       >
         Submit
       </button>
+
     </form>
   );
 };
