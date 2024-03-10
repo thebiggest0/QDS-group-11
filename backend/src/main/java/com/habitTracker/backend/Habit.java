@@ -28,9 +28,6 @@ public class Habit {
 
     private String endDate;
 
-    @OneToMany(mappedBy = "habit")
-    private Set<UserHabit> userHabits;
-
     public String getHabit_desc() {
         return habit_desc;
     }
@@ -50,15 +47,6 @@ public class Habit {
     public void setHabit_name(String habit_name) {
         this.habit_name = habit_name;
     }
-
-    public Set<UserHabit> getUserHabits() {
-        return userHabits;
-    }
-
-    public void setUserHabits(Set<UserHabit> userHabits) {
-        this.userHabits = userHabits;
-    }
-
     public String getIcon() {
         return icon;
     }

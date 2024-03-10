@@ -44,7 +44,7 @@ function App() {
 
 
       {/* <Form /> */}
-      {/* <Mood /> */}
+      <Mood />
       {/* <Footer /> */}
     </div>
   )
