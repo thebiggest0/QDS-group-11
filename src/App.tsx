@@ -5,6 +5,9 @@ import Calender from "@/scenes/calander";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
 import UserDataService from "./services/userService";
+import HabitList from "./form/habitLists";
+import HabitDetails from "./form/habitDetails";
+import CustomHabits from "./form/newCustomHabit";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.home);
@@ -40,6 +43,9 @@ function App() {
       <Home setSelectedPage={setSelectedPage} />
       <Calender />
       {/* <Form /> */}
+      <HabitList />
+      <HabitDetails />
+      <CustomHabits />
       {/* <Mood /> */}
       <About />
     </div>
