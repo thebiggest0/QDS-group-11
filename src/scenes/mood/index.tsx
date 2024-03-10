@@ -46,7 +46,7 @@ function MoodTracker() {
                         id="dateInput"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                 </div>
 
@@ -55,31 +55,31 @@ function MoodTracker() {
                     <div className="mood-buttons flex flex-wrap gap-2">
                         <div
                             onClick={() => handleMoodSelect('😄')}
-                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+                            className="text-white rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 no-underline text-gray-500"
                         >
                             <span className='emoji-font'>😄</span> Very Good
                         </div>
                         <div
                             onClick={() => handleMoodSelect('😊')}
-                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+                            className="text-white rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 no-underline text-gray-500"
                         >
                             😊 Good
                         </div>
                         <div
                             onClick={() => handleMoodSelect('😐')}
-                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+                            className="text-white rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 no-underline text-gray-500"
                         >
                             😐 Neutral
                         </div>
                         <div
                             onClick={() => handleMoodSelect('😕')}
-                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+                            className="text-white rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 no-underline text-gray-500"
                         >
                             😕 Bad
                         </div>
                         <div
                             onClick={() => handleMoodSelect('😔')}
-                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+                            className="text-white rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 no-underline text-gray-500"
                         >
                             😔 Very Bad
                         </div>
@@ -117,8 +117,8 @@ function MoodTracker() {
                     onClick={(e) => {
                         handleSubmit(e);
                     }}
-                    className="text-center record-button rounded-md bg-secondary-500 px-5 py-1 
-                    hover:bg-primary-500 hover:text-white no-underline text-gray-500
+                    className="text-white  text-center record-button rounded-md bg-secondary-500 px-5 py-1 
+                    hover:bg-primary-500 no-underline text-gray-500
                     text-xl lg:text-6xl font-light leading-tight tracking-tight"
                 >
                     Record
