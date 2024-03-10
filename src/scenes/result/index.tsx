@@ -40,12 +40,12 @@ const result = (props: Props) => {
 
 
     return (
-        <section id="result" className="flex flex-col items-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-500 leading-tight tracking-tight" >Results</h1>
+        <section id="result" className="flex flex-col items-center p-20">
+            <h1 className="text-gray-500 leading-tight tracking-tight" >Your Habits</h1>
 
             {
                 habits.map(item => (
-                    <div>
+                    <div className="flex flex-row flex-wrapper">
                         <Article
                             name={item.habit_name}
                             desc={item.habit_desc}

@@ -56,7 +56,7 @@ function MoodTracker() {
                             onClick={() => handleMoodSelect('😄')}
                             className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
                         >
-                            😄 Very Good
+                            <span className='emoji-font'>😄</span> Very Good
                         </div>
                         <div
                             onClick={() => handleMoodSelect('😊')}
@@ -119,7 +119,6 @@ function MoodTracker() {
                 Record
                 </div>
             </form>
-
         </div>
     );
 }
