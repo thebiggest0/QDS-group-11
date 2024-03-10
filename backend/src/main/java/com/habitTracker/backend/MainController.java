@@ -20,6 +20,9 @@ public class MainController {
   @Autowired
   private HabitRepository habitRepository;
 
+  @Autowired
+  private MoodRepository moodRepository;
+
 //  @PostMapping(path="/users/add") // Map ONLY POST Requests
 //  public @ResponseBody String addNewUser (@RequestParam String username,
 //                                          @RequestParam String email,
@@ -85,6 +88,17 @@ public class MainController {
     return "Habit saved";
   }
 
+  @PostMapping(path="/moods/add")
+  public @ResponseBody String addNewMood(@RequestBody Map<String, String> moodData) {
+    Mood m = new Mood();
+    m.setMood_date(moodData.get("mood_date"));
+    m.setMood(moodData.get("mood"));
+    m.setReason(moodData.get("reason"));
+    m.setNote(moodData.get("note"));
+    moodRepository.save(m);
+    return "Mood saved";
+  }
+
   @GetMapping(path="/users/all")
   public @ResponseBody Iterable<User> getAllUsers() {
     // This returns a JSON or XML with the users
@@ -96,5 +110,10 @@ public class MainController {
   public @ResponseBody Iterable<Habit> getAllHabits() {
     return habitRepository.findAll();
   }
+
+  @GetMapping(path="/moods/all")
+  public @ResponseBody Iterable<Mood> getAllMoods() { return moodRepository.findAll();
+  }
+
 
 }

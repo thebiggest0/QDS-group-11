@@ -1,8 +1,6 @@
 package com.habitTracker.backend;
 
 import jakarta.persistence.*;
-import java.util.Set;
-
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
