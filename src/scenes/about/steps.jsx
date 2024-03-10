@@ -36,8 +36,8 @@ const Work = () => {
                         <div className="info-boxes-img-container">
                             <img src={data.image} alt="" />
                         </div>
-                        <h2>{data.title}</h2>
-                        <p>{data.text}</p>
+                        <h2 className='font-light leading-tight tracking-tight text'>{data.title}</h2>
+                        <p className='font-light leading-tight tracking-tight text'>{data.text}</p>
                     </div>
                 ))}
             </div>

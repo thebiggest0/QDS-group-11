@@ -16,7 +16,7 @@ const calender = (props: Props) => {
   // calendar app
 
   return (
-    <section id="calendar">
+    <section id="calendar" className="p-20">
       <div className="flex w-5/6 mx-auto flex-col items-center gap-10">
         <div className="w-96 h-96">
 
