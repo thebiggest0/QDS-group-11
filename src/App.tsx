@@ -32,24 +32,24 @@ function App() {
     UserDataService.getAll()
       .then(response => { console.log(response.data) });
 
-    UserDataService.create({
-      "username": "front",
-      "email": "f@t.ca",
-      "password": "asdfgd"
-    })
-      .then(response => { console.log(response.data) });
+    // UserDataService.create({
+    //   "username": "front",
+    //   "email": "f@t.ca",
+    //   "password": "asdfgd"
+    // })
+    //   .then(response => { console.log(response.data) });
     
-      HabitDataService.create({
-        "habit_name": "front",
-        "habit_desc": "test",
-        "icon": "ico",
-        "color": "col",
-        "habit_type": "asdfgd",
-        "goal": "asdfgd",
-        "start_date": "asdfgd",
-        "end_date": "asdfgd"
-      })
-        .then(response => { console.log(response.data) });
+      // HabitDataService.create({
+      //   "habit_name": "front",
+      //   "habit_desc": "test",
+      //   "icon": "ico",
+      //   "color": "col",
+      //   "habit_type": "asdfgd",
+      //   "goal": "asdfgd",
+      //   "start_date": "asdfgd",
+      //   "end_date": "asdfgd"
+      // })
+      //   .then(response => { console.log(response.data) });
 
     // Clean up the event listener when the component unmounts
     return () => window.removeEventListener("scroll", handleScroll);
