@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import Article from "./article";
 import HabitDataService from "@/services/habitService";
 
-type Props = {}
-
 interface Habit {
     habit_id: number;
     habit_name: string;
@@ -16,40 +14,13 @@ interface Habit {
     end_date: string;
 }
 
+type Props = {
+    habits: Array<Habit>;
+    onDeleteHabit: Function;
+}
+
 const result = (props: Props) => {
-    const [habits, setHabits] = useState<Array<Habit>>([]);
-
-    const getHabits = async () => {
-        try {
-            const response = await HabitDataService.getAll();
-            const habitsFromServer = response.data;
-            setHabits(habitsFromServer);
-        } catch (error) {
-            // Handle any errors that might occur during the API call
-            console.error("Error fetching habits:", error);
-        }
-    };
-
-    useEffect(() => {
-        getHabits();
-    }, []);
-
-    useEffect(() => {
-        console.log(habits);
-    }, [habits]);
-
-    const deleteHabit = async (id: number, habits: Array<Habit>) => {
-        try {
-            await HabitDataService.delete(id);
-            const filteredHabits = habits.filter((habit) => { return habit.habit_id != id });
-            console.log("habits: " + habits.length);
-            console.log("filtered habits: " + filteredHabits.length);
-            setHabits(filteredHabits);
-        } catch (error) {
-            // Handle any errors that might occur during the API call
-            console.error("Error deleting habit: ", error);
-        }
-    };
+    
 
 
     return (
@@ -57,7 +28,7 @@ const result = (props: Props) => {
             <h1 className="text-gray-500 leading-tight tracking-tight" >Your Habits</h1>
 
             {
-                habits.map(item => (
+                props.habits.map(item => (
                     <div className="flex flex-row flex-wrapper">
                         <Article
                             key={item.habit_id}
@@ -69,7 +40,7 @@ const result = (props: Props) => {
                             goal={item.goal}
                             start={item.start_date}
                             end={item.end_date}
-                            onDelete={() => deleteHabit(item.habit_id, habits)}
+                            onDelete={() => props.onDeleteHabit(item.habit_id, props.habits)}
                         ></Article>
                     </div>
                 ))

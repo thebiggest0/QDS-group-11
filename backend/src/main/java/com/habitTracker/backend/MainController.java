@@ -76,7 +76,7 @@ public class MainController {
 //  }
 
   @PostMapping(path="/habits/add")
-  public @ResponseBody String addNewHabit(@RequestBody Map<String, String> habitData) {
+  public @ResponseBody int addNewHabit(@RequestBody Map<String, String> habitData) {
     Habit h = new Habit();
     h.setHabit_name(habitData.get("habit_name"));
     h.setHabit_desc(habitData.get("habit_desc"));
@@ -87,8 +87,8 @@ public class MainController {
     h.setPer(habitData.get("per"));
     h.setStartDate(habitData.get("start_date"));
     h.setEndDate(habitData.get("end_date"));
-    habitRepository.save(h);
-    return "Habit saved";
+    Habit res = habitRepository.save(h);
+    return res.getHabit_id(); //"Habit saved";
   }
 
   @PostMapping(path="/moods/add")
