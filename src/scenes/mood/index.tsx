@@ -35,10 +35,10 @@ function MoodTracker() {
     };
 
     return (
-        <div className="moodTracker flex justify-center items-center flex-col">
+        <div className="moodTracker flex justify-center items-center flex-col p-20">
             <h1>Mood Tracker</h1>
-            <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
-                <div>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
+                <div className="text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
                     <label htmlFor="dateInput">Date:</label>
                     <input
                         type="date"
@@ -49,7 +49,7 @@ function MoodTracker() {
                     />
                 </div>
 
-                <div>
+                <div className="text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
                     <label>Mood:</label>
                     <div className="mood-buttons flex flex-wrap gap-2">
                         <div
@@ -84,9 +84,11 @@ function MoodTracker() {
                         </div>
                     </div>
                 </div>
-                <p>Selected Mood: {mood}</p>
+                <p className="text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
+                    Selected Mood: {mood}
+                </p>
 
-                <div>
+                <div className="text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
                     <label htmlFor="reasonInput">Reason for the mood:</label><br />
                     <textarea
                         id="reasonInput"
@@ -98,7 +100,7 @@ function MoodTracker() {
                     />
                 </div>
 
-                <div>
+                <div className="text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
                     <label htmlFor="phraseInput">Today's note:</label><br />
                     <textarea
                         id="phraseInput"
@@ -114,9 +116,11 @@ function MoodTracker() {
                     onClick={(e) => {
                         handleSubmit(e);
                     }}
-                    className="text-center record-button rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+                    className="text-center record-button rounded-md bg-secondary-500 px-5 py-1 
+                    hover:bg-primary-500 hover:text-white no-underline text-gray-500
+                    text-xl lg:text-6xl font-light leading-tight tracking-tight"
                 >
-                Record
+                    Record
                 </div>
             </form>
         </div>
