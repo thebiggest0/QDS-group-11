@@ -10,7 +10,7 @@ img {
     height: auto;
 }
 
-.App {
+#about {
     min-height: 100vh;
     width: 85vw;
     max-width: 1900px;
@@ -113,7 +113,7 @@ nav {
 
 .secondary-button {
     padding: 1rem 2.5rem;
-    background-color: #fe9e0d;
+    background-color: #a6966d;
     outline: none;
     border: none;
     border-radius: 5rem;
@@ -133,7 +133,7 @@ nav {
 }
 
 .secondary-button:hover {
-    background-color: #e48f0f;
+    background-color: #507754;
 }
 
 .about-section-container {
@@ -258,7 +258,7 @@ nav {
 .footer-section-columns {
     display: flex;
     flex-direction: column;
-    min-width: 190px;
+    min-width: 290px;
 }
 
 .footer-section-columns span {
