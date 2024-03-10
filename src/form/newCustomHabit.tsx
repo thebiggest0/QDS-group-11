@@ -266,14 +266,14 @@ const Uncontrolled: React.FC = () => {
         <div className="mb-4 flex items-center">
           <button
             type="submit"
-            className="text-white border-none rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500"
+            className="text-white text-xl border-none rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500"
           >
             Submit
           </button>
           <button
             type="button"
             onClick={clearForm}
-            className="text-lime-800 bg-gray-20 border-none m-1 rounded-md px-5 py-1"
+            className="text-lime-800 text-xl bg-gray-20 border-none m-1 rounded-md px-5 py-1"
           >
             Clear
           </button>
