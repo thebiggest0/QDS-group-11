@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './moodTracker.css';
 
 function MoodTracker() {
     // State to manage form inputs
@@ -34,9 +35,9 @@ function MoodTracker() {
     };
 
     return (
-        <div>
+        <div className="moodTracker flex justify-center items-center flex-col">
             <h1>Mood Tracker</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
                 <div>
                     <label htmlFor="dateInput">Date:</label>
                     <input
@@ -44,42 +45,43 @@ function MoodTracker() {
                         id="dateInput"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
+                        className="block text-sm font-medium leading-6 text-gray-900"
                     />
                 </div>
 
                 <div>
                     <label>Mood:</label>
-                    <div className="mood-buttons">
-                        <button
+                    <div className="mood-buttons flex flex-wrap gap-2">
+                        <div
                             onClick={() => handleMoodSelect('😄')}
-                            className={mood === '😄' ? 'selected' : ''}
+                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
                         >
                             😄 Very Good
-                        </button>
-                        <button
+                        </div>
+                        <div
                             onClick={() => handleMoodSelect('😊')}
-                            className={mood === '😊' ? 'selected' : ''}
+                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
                         >
                             😊 Good
-                        </button>
-                        <button
+                        </div>
+                        <div
                             onClick={() => handleMoodSelect('😐')}
-                            className={mood === '😐' ? 'selected' : ''}
+                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
                         >
                             😐 Neutral
-                        </button>
-                        <button
+                        </div>
+                        <div
                             onClick={() => handleMoodSelect('😕')}
-                            className={mood === '😕' ? 'selected' : ''}
+                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
                         >
                             😕 Bad
-                        </button>
-                        <button
+                        </div>
+                        <div
                             onClick={() => handleMoodSelect('😔')}
-                            className={mood === '😔' ? 'selected' : ''}
+                            className="rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
                         >
                             😔 Very Bad
-                        </button>
+                        </div>
                     </div>
                 </div>
                 <p>Selected Mood: {mood}</p>
@@ -90,8 +92,9 @@ function MoodTracker() {
                         id="reasonInput"
                         value={reason}
                         onChange={(e) => setReason(e.target.value)}
-                        rows="2" 
+                        rows="2"
                         cols="30"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                 </div>
 
@@ -103,9 +106,18 @@ function MoodTracker() {
                         onChange={(e) => setPhrase(e.target.value)}
                         rows="2"
                         cols="30"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                 </div>
-                <button type="submit">Record</button>
+                <div
+                    // onClick={() => {handleSubmit}}
+                    onClick={(e) => {
+                        handleSubmit(e);
+                    }}
+                    className="text-center record-button rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+                >
+                Record
+                </div>
             </form>
 
         </div>

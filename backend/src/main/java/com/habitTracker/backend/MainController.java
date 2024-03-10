@@ -5,13 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @Controller // This means that this class is a Controller
@@ -24,39 +20,67 @@ public class MainController {
   @Autowired
   private HabitRepository habitRepository;
 
+//  @PostMapping(path="/users/add") // Map ONLY POST Requests
+//  public @ResponseBody String addNewUser (@RequestParam String username,
+//                                          @RequestParam String email,
+//                                          @RequestParam String password) {
+//    // @ResponseBody means the returned String is the response, not a view name
+//    // @RequestParam means it is a parameter from the GET or POST request
+//
+//    User n = new User();
+//    n.setName(username);
+//    n.setEmail(email);
+//    n.setPassword(password);
+//    userRepository.save(n);
+//    return "New user added";
+//  }
+
   @PostMapping(path="/users/add") // Map ONLY POST Requests
-  public @ResponseBody String addNewUser (@RequestParam String username,
-                                          @RequestParam String email,
-                                          @RequestParam String password) {
+  public @ResponseBody String addNewUser(@RequestBody Map<String, String> userData) {
     // @ResponseBody means the returned String is the response, not a view name
-    // @RequestParam means it is a parameter from the GET or POST request
+    // @RequestBody is used to deserialize the JSON request body into a Map
 
     User n = new User();
-    n.setName(username);
-    n.setEmail(email);
-    n.setPassword(password);
+    n.setName(userData.get("username"));
+    n.setEmail(userData.get("email"));
+    n.setPassword(userData.get("password"));
     userRepository.save(n);
     return "New user added";
   }
 
+//  @PostMapping(path="/habits/add")
+//  public @ResponseBody String addNewHabit (@RequestParam String habit_name,
+//                                           @RequestParam String habit_desc,
+//                                           @RequestParam String icon,
+//                                           @RequestParam String color,
+//                                           @RequestParam String habit_type,
+//                                           @RequestParam String goal,
+//                                           @RequestParam String start_date,
+//                                           @RequestParam String end_date) {
+//    Habit h = new Habit();
+//    h.setHabit_name(habit_name);
+//    h.setHabit_desc(habit_desc);
+//    h.setIcon(icon);
+//    h.setColor(color);
+//    h.setHabit_type(habit_type);
+//    h.setGoal(goal);
+//    h.setStartDate(start_date);
+//    h.setEndDate(end_date);
+//    habitRepository.save(h);
+//    return "Habit saved";
+//  }
+
   @PostMapping(path="/habits/add")
-  public @ResponseBody String addNewHabit (@RequestParam String habit_name,
-                                           @RequestParam String habit_desc,
-                                           @RequestParam String icon,
-                                           @RequestParam String color,
-                                           @RequestParam String habit_type,
-                                           @RequestParam String goal,
-                                           @RequestParam String start_date,
-                                           @RequestParam String end_date) {
+  public @ResponseBody String addNewHabit(@RequestBody Map<String, String> habitData) {
     Habit h = new Habit();
-    h.setHabit_name(habit_name);
-    h.setHabit_desc(habit_desc);
-    h.setIcon(icon);
-    h.setColor(color);
-    h.setHabit_type(habit_type);
-    h.setGoal(goal);
-    h.setStartDate(start_date);
-    h.setEndDate(end_date);
+    h.setHabit_name(habitData.get("habit_name"));
+    h.setHabit_desc(habitData.get("habit_desc"));
+    h.setIcon(habitData.get("icon"));
+    h.setColor(habitData.get("color"));
+    h.setHabit_type(habitData.get("habit_type"));
+    h.setGoal(habitData.get("goal"));
+    h.setStartDate(habitData.get("start_date"));
+    h.setEndDate(habitData.get("end_date"));
     habitRepository.save(h);
     return "Habit saved";
   }

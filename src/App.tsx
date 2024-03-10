@@ -1,7 +1,9 @@
 import Navbar from "@/scenes/navbar";
 import Home from "@/scenes/home";
+import Mood from "@/scenes/mood";
 import About from "@/scenes/about";
 import Calender from "@/scenes/calander";
+import Result from "@/scenes/result";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
 import UserDataService from "./services/userService";
@@ -43,10 +45,9 @@ function App() {
       <Home setSelectedPage={setSelectedPage} />
       <Calender />
       {/* <Form /> */}
-      <HabitList />
-      <HabitDetails />
       <CustomHabits />
       {/* <Mood /> */}
+      <Result />
       <About />
     </div>
   )
