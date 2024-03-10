@@ -88,7 +88,7 @@ const Uncontrolled: React.FC = () => {
       "end_date": `${habitEndDateRef.current?.value}`
     })
       .then(response => { console.log(response.data) });
-
+    alert("Habit created successfully!");
     console.log("Submitted!");
   }
 

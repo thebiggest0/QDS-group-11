@@ -32,6 +32,7 @@ function MoodTracker() {
         console.log('Phrase:', phrase);
 
         // Additional processing such as sending data to server can be added here
+        alert("Mood recorded successfully!");
     };
 
     return (
