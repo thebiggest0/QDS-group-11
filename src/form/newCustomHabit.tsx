@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import HabitDataService from "@/services/habitService";
 
 const iconList: { icon: string; label: string }[] = [
   { icon: "🏋️", label: "WorkOut" },
@@ -53,6 +54,7 @@ const Uncontrolled: React.FC = () => {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     console.log("Habit name:", habitNameRef.current?.value);
     console.log("Habit description:", habitDescriptionRef.current?.value);
     console.log("Habit icon:", habitIconRef.current?.value);
@@ -61,6 +63,18 @@ const Uncontrolled: React.FC = () => {
     console.log("Habit goal period:", habitGoalPeriodRef.current?.value);
     console.log("Habit term starts :", habitStartDateRef.current?.value);
     console.log("Habit term ends :", habitEndDateRef.current?.value);
+
+    HabitDataService.create({
+      "habit_name": `${habitNameRef.current?.value}`,
+      "habit_desc": `${habitDescriptionRef.current?.value}`,
+      "icon": `${habitIconRef.current?.value}`,
+      "color": `${selectedColour}`,
+      "habit_type": `${habitGoalRef.current?.value}`,
+      "goal": `${habitGoalPeriodRef.current?.value}`,
+      "start_date": `${habitStartDateRef.current?.value}`,
+      "end_date": `${habitEndDateRef.current?.value}`
+    })
+      .then(response => { console.log(response.data) });
 
     console.log("Submitted!");
   }
@@ -95,11 +109,11 @@ const Uncontrolled: React.FC = () => {
           <div className="flex flex-wrap gap-2">
             {iconList.map(({ icon, label }) => (
               <button
+                type='button'
                 ref={habitIconRef}
                 key={label}
-                className={`p-2 bg-gray-200 rounded-full focus:outline-none ${
-                  selectedIcon === icon ? "bg-blue-500 text-white" : ""
-                }`}
+                className={`p-2 bg-gray-200 rounded-full focus:outline-none ${selectedIcon === icon ? "bg-blue-500 text-white" : ""
+                  }`}
                 onClick={() => handleIconClick(icon)}
               >
                 <i className="material-icons">{icon}</i>
@@ -121,6 +135,7 @@ const Uncontrolled: React.FC = () => {
           <div className="flex items-center space-x-2">
             {sampleColours.map((colour, index) => (
               <button
+                type='button'
                 key={index}
                 className="w-10 h-10 rounded-full border border-gray-300 focus:outline-none flex items-center justify-center"
                 style={{ backgroundColor: colour }}
@@ -138,21 +153,21 @@ const Uncontrolled: React.FC = () => {
           <p>Habit Type:</p>
           <div>
             <button
-              className={`mr-4 px-4 py-2 rounded focus:outline-none ${
-                habitType === "quit"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300 text-gray-700"
-              }`}
+              type='button'
+              className={`mr-4 px-4 py-2 rounded focus:outline-none ${habitType === "quit"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-300 text-gray-700"
+                }`}
               onClick={() => handleHabitTypeClick("quit")}
             >
               Quit : I don't want this habit
             </button>
             <button
-              className={`px-4 py-2 rounded focus:outline-none ${
-                habitType === "build"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300 text-gray-700"
-              }`}
+              type='button'
+              className={`px-4 py-2 rounded focus:outline-none ${habitType === "build"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-300 text-gray-700"
+                }`}
               onClick={() => handleHabitTypeClick("build")}
             >
               Build : I want to start to have a new habit!
