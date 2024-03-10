@@ -24,9 +24,8 @@ const Work = () => {
     return (
         <div className="work-section-wrapper">
             <div className="work-section-top">
-                <p className="primary-subheading">Getting Started</p>
-                <h1 className="primary-heading">How It Works</h1>
-                <p className="font-light leading-tight tracking-tight">
+                <h1>How It Works</h1>
+                <p className="text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500">
                     Follow these three simple steps, it is easy!
                 </p>
             </div>
@@ -36,7 +35,7 @@ const Work = () => {
                         <div className="info-boxes-img-container">
                             <img src={data.image} alt="" />
                         </div>
-                        <h2 className='font-light leading-tight tracking-tight text'>{data.title}</h2>
+                        <h2 className='text-xl lg:text-6xl font-light leading-tight tracking-tight text-gray-500'>{data.title}</h2>
                         <p className='font-light leading-tight tracking-tight text'>{data.text}</p>
                     </div>
                 ))}

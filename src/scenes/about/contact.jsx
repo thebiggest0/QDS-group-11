@@ -27,8 +27,8 @@ const Contact = () => {
 
     return (
         <div className="contact-page-wrapper">
-            <h1 className="primary-heading">Have Question In Mind?</h1>
-            <h1 className="primary-heading">Let Us Help You</h1>
+            <h1 >Have Question In Mind?</h1>
+            <h1 >Let Us Help You</h1>
             <form className="form-container" ref={form} onSubmit={sendEmail}>
                 <div>
                     <label>Name</label>
@@ -40,7 +40,7 @@ const Contact = () => {
                 </div>
                 <div>
                     <label>Message</label>
-                    <textarea name="message" />
+                    <textarea className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                 </div>
                 <input className="secondary-button" type="submit" value="Send" />
             </form>

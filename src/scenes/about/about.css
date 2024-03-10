@@ -94,6 +94,7 @@ textarea {
 
 .form-container {
     margin: 0 auto;
+    width: 60%;
     padding: 20px;
     border-radius: 8px;
     background-color: #f7f7f7;
@@ -120,7 +121,7 @@ textarea {
 .form-container input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #a6966d;
     color: white;
     border: none;
     border-radius: 5px;
@@ -257,7 +258,7 @@ textarea {
     flex: 1;
     display: flex;
     align-items: center;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
 @media (max-width: 1000px) {
@@ -309,20 +310,9 @@ textarea {
         max-width: 400px;
     }
 
-    .primary-heading {
-        text-align: center;
-        max-width: 90%;
-    }
-
     .primary-text {
         text-align: center;
         max-width: 80%;
-    }
-
-    .secondary-button {
-        font-size: 1rem;
-        padding: 0.8rem 2rem;
-        cursor: pointer;
     }
 
     .about-section-container {
@@ -332,10 +322,6 @@ textarea {
     .about-buttons-container {
         justify-content: center;
         flex-direction: column;
-    }
-
-    .primary-subheading {
-        text-align: center;
     }
 
     .about-section-image-container {
