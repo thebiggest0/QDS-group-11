@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './moodTracker.css';
 
-function MoodTracker() {
+type Props = {
+    onAddMood: Function;
+}
+
+function MoodTracker({onAddMood}: Props) {
     // State to manage form inputs
     const [phrase, setPhrase] = useState('');
     const [date, setDate] = useState(getToday());
@@ -31,8 +35,7 @@ function MoodTracker() {
         console.log('Reason:', reason);
         console.log('Phrase:', phrase);
 
-        // Additional processing such as sending data to server can be added here
-        alert("Mood recorded successfully!");
+        onAddMood(date, mood, reason, phrase);
     };
 
     return (

@@ -4,16 +4,45 @@ import { generateDate, months } from "@/util/calendar";
 import cn from "@/util/cn";
 import { useEffect, useState } from "react";
 
-type Props = {}
+interface Mood {
+  mood_date: string;
+  mood: string;
+  reason: string;
+  note: string;
+}
 
-const calender = (props: Props) => {
+type Props = {
+  moods: Array<Mood>
+}
+
+const calender = ({ moods }: Props) => {
   // calender app
   const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
   const currentDate = dayjs();
   const [today, setToday] = useState(currentDate);
   const [selectDate, setSelectDate] = useState(currentDate);
+  const [daysMoods, setDaysMoods] = useState([]);
+  const [moodDays, setMoodDays] = useState([])
 
-  // calendar app
+  useEffect(() => {
+    getDaysMoods(selectDate);
+  }, [moods]);
+
+  const getDaysMoods = (date) => {
+    const moodList: Array<Mood> = moods.filter((mood) => {
+      return dayjs(mood.mood_date).isSame(date, 'day')
+    });
+    setDaysMoods(moodList);
+  }
+
+  const handleDateSelect = (date) => {
+    getDaysMoods(date);
+    setSelectDate(date);
+  }
+
+  const getMoodDays = () => {
+
+  }
 
   return (
     <section id="calendar" className="p-20">
@@ -58,7 +87,7 @@ const calender = (props: Props) => {
                     "h-10 w-10 grid place-content-center rounded-full hover:bg-black hover:text-white transition-all cursor-pointer"
                   )}
                     onClick={() => {
-                      setSelectDate(date)
+                      handleDateSelect(date)
                     }}
 
                   >
@@ -73,6 +102,9 @@ const calender = (props: Props) => {
         <div className="pt-10">
           <h1 className="text-base">Schedule for {selectDate.toDate().toDateString()}</h1>
           <p>Nothing at the moment</p>
+          <br></br>
+          {daysMoods.length > 0 && <h1 className="text-base">Moods</h1>}
+          {daysMoods.map((mood) => <p>Mood: {mood.mood}    Reason: {mood.reason}</p>)}
 
         </div>
       </div>
