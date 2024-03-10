@@ -124,6 +124,7 @@ const Uncontrolled: React.FC = () => {
         </label>
       </div>
 
+{/* non italic!!! */}
       <div className="mb-4">
         <label className="block mb-2">
           <p>Choose Icon:</p>
@@ -133,11 +134,11 @@ const Uncontrolled: React.FC = () => {
                 type='button'
                 ref={habitIconRef}
                 key={label}
-                className={`tw-10 h-15 rounded-full border border-gray-300 focus:outline-none flex items-center justify-center ${selectedIcon === icon ? "bg-secondary-500 text-white" : ""
-                  }`}
+                className={"tw-10 h-15 rounded-full border border-gray-300 focus:bg-secondary-500 flex items-center justify-center hover:outline-double"
+                  }
                 onClick={() => handleIconClick(icon)}
               >
-                <i className="material-icons text-5xl">{icon}</i> {/* Adjust text size here */}
+                <i className="not-italic text-center material-icons text-5xl">{icon}</i> {/* Adjust text size here */}
               </button>
             ))}
           </div>
@@ -146,37 +147,23 @@ const Uncontrolled: React.FC = () => {
 
 
       <div className="mb-4">
-      <label className="block mb-2">
-        <p>Colour:</p>
-        <input
-          ref={habitColourRef}
-          type="color"
-          value={selectedColour}
-          className="hidden"
-          onChange={(e) => setSelectedColour(e.target.value)}
-        />
-        <div className="flex items-center space-x-2 justify-center">
-          {sampleColours.map((colour, index) => (
-            <button
-              type='button'
-              key={index}
-              className="w-10 h-10 rounded-full border border-gray-300 focus:outline-none flex items-center justify-center"
-              style={{ backgroundColor: colour }}
-              onClick={() => handleColourChange(colour)}
-            >
-            </button>
-          ))}
-
-          {/* test colour picker */}
-      <button className="w-10 h-10 rounded-full border border-gray-300 focus:outline-none flex items-center justify-center" 
-      onClick={() => {
-              if (habitColourRef.current) {
-                habitColourRef.current.click(); 
-              }
-            }}> <input type="color" className="w-10 h-10 rounded-full focus:outline-none flex items-center justify-center" id="hs-color-input" value="#F2F3EE" title="Choose your color"></input></button>
-        </div>
-      </label>
+  <label className="block mb-2">
+    <p>Colour:</p>
+    {/* Remove this div and its contents */}
+    <div className="flex items-center space-x-2">
+      {sampleColours.map((colour, index) => (
+        <button
+          type='button'
+          key={index}
+          className="w-10 h-10 rounded-full border border-gray-300 focus:bg-secondary-500 focus:outline-double flex items-center justify-center"
+          style={{ backgroundColor: colour }}
+          onClick={() => handleColourChange(colour)}
+        >
+        </button>
+      ))}
     </div>
+  </label>
+</div>
 
     <div className="mb-4">
     <label className="block mb-2">
@@ -184,14 +171,14 @@ const Uncontrolled: React.FC = () => {
       <div className="flex">
         <button
           type='button'
-          className={`border-none m-1 rounded-md ${habitType === "quit" ? "bg-green-500 text-white" : "bg-secondary-500 text-gray-500"} px-5 py-1 hover:bg-primary-500 hover:text-white no-underline`}
+          className={`text-white border-none m-1 rounded-md ${habitType === "quit" ? "bg-secondary-500 text-white" : "bg-grey-500 text-lime-800"} px-5 py-1 no-underline`}
           onClick={() => handleHabitTypeClick("quit")}
         >
           Quit
         </button>
         <button
           type='button'
-          className={`border-none m-1 rounded-md ${habitType === "build" ? "bg-green-500 text-white" : "bg-secondary-500 text-gray-500"} px-5 py-1 hover:bg-primary-500 hover:text-white no-underline`}
+          className={`text-white border-none m-1 rounded-md ${habitType === "build" ? "bg-secondary-500 text-white" : "bg-grey-500 text-lime-800"} px-5 py-1 no-underline`}
           onClick={() => handleHabitTypeClick("build")}
         >
           Build
@@ -282,7 +269,7 @@ const Uncontrolled: React.FC = () => {
       <div className="mb-4 flex items-center">
   <button
     type="submit"
-    className="border-none rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+    className="text-white border-none rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500"
   >
     Submit
   </button>
@@ -290,7 +277,7 @@ const Uncontrolled: React.FC = () => {
   <button
   type="button"
   onClick={clearForm}
-  className="border-none m-1 rounded-md bg-secondary-500 px-5 py-1 hover:bg-primary-500 hover:text-white no-underline text-gray-500"
+  className="text-lime-800 bg-gray-20 border-none m-1 rounded-md px-5 py-1"
 >
   Clear
 </button>
