@@ -33,9 +33,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                             <div className={`${flexBetween} w-full`}>
                                 <div className={`${flexBetween} gap-8 text-sm`}>
                                     <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                                    <Link page="Info" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                                     <Link page="Calendar" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                                     <Link page="Form" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                                    <Link page="About" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                                 </div>
 
                                 <div className={`${flexBetween} gap-8`}>

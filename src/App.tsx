@@ -1,10 +1,17 @@
 import Navbar from "@/scenes/navbar";
 import Home from "@/scenes/home";
+<<<<<<< HEAD
 import Mood from "@/scenes/mood";
+=======
+>>>>>>> 9150514def4e35aab231362a89b20b8965198180
 import About from "@/scenes/about";
 import Calender from "@/scenes/calander";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
+import UserDataService from "./services/userService";
+import HabitList from "./form/habitLists";
+import HabitDetails from "./form/habitDetails";
+import CustomHabits from "./form/newCustomHabit";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.home);
@@ -22,6 +29,10 @@ function App() {
     // Add the event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
 
+    // Get users from API and set state
+    UserDataService.getAll()
+      .then(response => { console.log(response.data) });
+
     // Clean up the event listener when the component unmounts
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -35,13 +46,12 @@ function App() {
       />
       <Home setSelectedPage={setSelectedPage} />
       <Calender />
-      <About />
-
-
-
       {/* <Form /> */}
-      <Mood />
-      {/* <Footer /> */}
+      <HabitList />
+      <HabitDetails />
+      <CustomHabits />
+      {/* <Mood /> */}
+      <About />
     </div>
   )
 }
