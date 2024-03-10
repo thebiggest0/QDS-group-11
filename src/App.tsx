@@ -29,30 +29,6 @@ function App() {
     // Add the event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
 
-    // Get users from API and set state
-    // MoodDataService.getAll()
-    //   .then(response => { console.log(response.data) });
-
-    // MoodDataService.create({
-    //   "mood_date": "today",
-    //   "mood": "happy",
-    //   "reason": "things are good",
-    //   "note": "wow what a day"
-    // })
-    //   .then(response => { console.log(response.data) });
-    
-      // HabitDataService.create({
-      //   "habit_name": "front",
-      //   "habit_desc": "test",
-      //   "icon": "ico",
-      //   "color": "col",
-      //   "habit_type": "asdfgd",
-      //   "goal": "asdfgd",
-      //   "start_date": "asdfgd",
-      //   "end_date": "asdfgd"
-      // })
-      //   .then(response => { console.log(response.data) });
-
     // Clean up the event listener when the component unmounts
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

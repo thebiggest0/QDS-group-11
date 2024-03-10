@@ -41,9 +41,9 @@ const result = (props: Props) => {
     const deleteHabit = async (id: number, habits: Array<Habit>) => {
         try {
             await HabitDataService.delete(id);
-            const filteredHabits = habits.filter((habit) => { return habit.habit_id == id });
-            console.log("habits: " + habits);
-            console.log("filtered habits: " + filteredHabits);
+            const filteredHabits = habits.filter((habit) => { return habit.habit_id != id });
+            console.log("habits: " + habits.length);
+            console.log("filtered habits: " + filteredHabits.length);
             setHabits(filteredHabits);
         } catch (error) {
             // Handle any errors that might occur during the API call
@@ -60,6 +60,7 @@ const result = (props: Props) => {
                 habits.map(item => (
                     <div className="flex flex-row flex-wrapper">
                         <Article
+                            key={item.habit_id}
                             name={item.habit_name}
                             desc={item.habit_desc}
                             icon={item.icon}
