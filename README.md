@@ -1,30 +1,52 @@
-# React + TypeScript + Vite
+# Froget
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Inspiration
+As CST students balancing tough deadlines, coursework, and life, we often lose track of our good habits and succumb to not-so-great ones. It's easy to dwell on the negatives in our busy lives, overlooking the positives. That's why we've decided to create a simple habit and mood tracker. Our goal is to help students look back on the good and bad days, understand what makes a day go well, and learn from the not-so-good ones. Our goal is to bring balance and mindfulness back into our hectic lives, guiding us to foster better habits and maintain our emotional well-being.
 
-Currently, two official plugins are available:
+## What it does
+Our app allows users to:
+- Record their habits, goals, and mood along with detailed information (optional)
+- Display recorded information dynamically so they can look at it in the future
+- Provide a calendar for users to plan habits and goals
+- Provide an email contact form
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How we built it
+- **Frontend**: React + Typescript + JavaScript
+- **Backend**: Spring (Java + Rest API)
+- **Database**: MySQL
 
-## Expanding the ESLint configuration
+## Challenges we ran into
+- Setting up backend-frontend connection
+- Learning new unfamiliar libraries and frameworks
+- Finishing core features with a very tight timeline
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Accomplishments that we're proud of
+- Successfully connected frontend & backend
+- Read and write data between the user interface and database
+- Working together as a team
+- Making new friends and collaborating with other passionate developers
 
-- Configure the top-level `parserOptions` property like this:
+## What we learned
+- How to work effectively and efficiently in a team
+- Becoming more familiar with new tools and libraries (React, Spring)
+- Communication between team members
+- Managing a Github repository among 6 team members
+- Working under pressure and tight timelines
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## What's next for Froget
+With more time, we hope to:
+- Add dynamic mood icons to the calendar, showcasing the mood for each calendar date
+- Create a user profile with graphs and data to visualize habits and mood trends
+- Implement a reward system that promotes continuous habit & goal setting
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Built With
+- intellij-idea
+- java
+- javascript
+- mysql
+- react
+- rest
+- spring
+- typescript
+- vite
+- vscode
