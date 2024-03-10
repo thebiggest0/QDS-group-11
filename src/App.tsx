@@ -2,6 +2,8 @@ import Navbar from "@/scenes/navbar";
 import Home from "@/scenes/home";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
+import TutorialDataService from "./services/tutorialService";
+import UserDataService from "./services/userService";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.home);
@@ -19,13 +21,17 @@ function App() {
     // Add the event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
 
+    // Get users from API and set state
+    UserDataService.getAll()
+      .then(response => { console.log(response.data) });
+
     // Clean up the event listener when the component unmounts
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div className="app" bg-gray-20>
-      <Navbar 
+      <Navbar
         isTopOfPage={isTopOfPage}
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
